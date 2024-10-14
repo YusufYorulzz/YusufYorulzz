@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<style>
+	img {
+		width:200px;height:200px;"
+	}
+</style>
+<body>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+		resimler=["dino.jpg","dino2.jpg","kabak.jpg","kabak2.jpg","kedi2.jpg","köpek.jpg","yilan.jpg","yilan3.jpg","dino.jpg","dino2.jpg","kabak.jpg","kabak2.jpg","kedi2.jpg","köpek.jpg","yilan.jpg","yilan3.jpg"];
+		cikansayilar=[];
+		 ekranimg = document.getElementsByTagName('img');
+		 ekranimg = Array.prototype.slice.call(ekranimg);
+		 for(i in ekranimg){
+		 			 debugger;
+		 	if(ekranimg[i].hidden==false){
+		 		ekranimg.splice(i,1);
+		 	} 
+		 }
+	})
+		function rndsayi() {
+			devam=true;
+			buldumu=false;
+			//debugger;
+			while(devam){
+				randomsayi =Math.floor(Math.random()*100);
+
+				if (randomsayi>15) {
+					continue;
+				}
+				//debugger;
+				for(i of cikansayilar){
+					if (i==randomsayi) {
+						buldumu=true;
+						break;
+					}
+				}
+				if (buldumu) {
+					buldumu=false;
+					continue;
+				}
+				cikansayilar.push(randomsayi);
+				devam=false;
+				return randomsayi;
+			}
+		}
+		function resimno(){
+			for (var i = 0;i<16;i++) {
+				yer = rndsayi();
+					//debugger;
+
+				ekranimg[i].src ="img/" + resimler[yer];
+				
+			}
+
+
+
+		}
+	</script>
+<table>
+	<tr>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+	</tr>
+	<tr>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+	</tr>
+	<tr>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+	</tr>
+	<tr>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+		<td><img class ="asil" hidden src="img/dino.jpg"><img src="img/bos.jpg"></td>
+	</tr>
+</table>
+<button onclick="resimno()">Karıştır</button>
+</body>
+</html>
