@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Yusuf</title>
+</head>
+<body>
+
+<script>
+birinciSayi = "" ; 
+ikinciSayi = "" ;
+sonuc = "0" ;
+islem = "" ;
+
+function tus(basilanTus) {
+	if (islem == "" ) {
+		birinciSayi =  birinciSayi +  basilanTus ;
+		document.getElementById("sonuc").innerHTML = birinciSayi ;
+	}
+	else  {
+   ikinciSayi = ikinciSayi + basilanTus ; 
+   document.getElementById("sonuc").innerHTML = ikinciSayi ;
+	}
+	
+  
+}
+
+
+
+
+
+function yapilanIslem(basilanIslem) {
+
+	switch (basilanIslem) {
+	case "=":
+		if (birinciSayi == "") {
+			document.getElementById("sonuc").innerHTML="1. Sayı gir";
+			break ; 
+		}
+		if (islem == ""){
+			document.getElementById("sonuc").innerHTML="işlem seçiniz";
+			break;
+		}
+
+		if (ikinciSayi == "") {
+			document.getElementById("sonuc").innerHTML="2. Sayı gir";
+			break;
+		}
+		document.getElementById("asama").innerHTML += ikinciSayi + " = " ;
+		switch (islem) {
+		case "+" :
+		  sonuc = Number (birinciSayi) + Number (ikinciSayi) ;
+			break;
+		case ("-") : 
+			sonuc = Number (birinciSayi) - Number (ikinciSayi) ;
+			break;
+		case ("*") : 
+			sonuc = Number (birinciSayi) * Number (ikinciSayi) ;
+			break;
+		case ( "/" ) : 
+			sonuc = Number (birinciSayi) / Number (ikinciSayi) ;
+			break;
+		}
+		document.getElementById("sonuc").innerHTML = sonuc ;
+
+		break;
+	case "C":
+		islem = "" ; 
+		birinciSayi = "" ; 
+		ikinciSayi = "" ;
+		sonuc = "0" ;
+		document.getElementById("sonuc").innerHTML = sonuc ;
+		document.getElementById("asama").innerHTML = sonuc ; 
+		break;
+
+	default : 
+		islem = basilanIslem ; 
+		document.getElementById("asama").innerHTML = birinciSayi + " " +  basilanIslem + " ";
+		break ; 
+	}
+  
+}
+</script>
+
+<h1>Hesap Makinası</h1>
+<div style=" width: 100%;" > 
+
+	<table border=1 >
+		<tr height=12px >
+			<td colspan="4" style="text-align:right ;"><a id="asama" style="font-weight:bold ; font-size: 12px;">0</a></td> 
+		</tr>
+
+		<tr height=24px >
+			<td colspan="4" style="text-align:right ;"><a id="sonuc" style="font-weight:bold ; font-size: 24px;">0</a></td> 
+		</tr>
+
+		<tr >
+			<td> <button onclick="tus(7);">7</button> </td> 
+			<td> <button onclick="tus(8);">8</button> </td>
+			<td> <button onclick="tus(9);">9</button> </td>
+			<td> <button onclick="yapilanIslem('*');">*</button> </td>
+		</tr>
+		<tr >
+			<td> <button onclick="tus(4);">4</button> </td> 
+			<td> <button onclick="tus(5);">5</button> </td>
+			<td> <button onclick="tus(6);">6</button> </td>
+			<td> <button onclick="yapilanIslem('-');">-</button> </td>
+		</tr>
+		<tr >
+			<td> <button onclick="tus(1);">1</button> </td> 
+			<td> <button onclick="tus(2);">2</button> </td>
+			<td> <button onclick="tus(3);">3</button> </td>
+			<td> <button onclick="yapilanIslem('+');">+</button> </td>
+		</tr>
+		<tr >
+			<td> <button onclick="yapilanIslem('/');">/</button> </td> 
+			<td> <button onclick="tus(0);">0</button> </td>
+			<td> <button onclick="yapilanIslem('C');">C</button> </td>
+			<td> <button onclick="yapilanIslem('=');">=</button> </td>
+		</tr>
+	</table> 
+
+
+</div>
+
+</body>
+</html>
